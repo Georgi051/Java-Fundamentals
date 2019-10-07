@@ -1,1 +1,30 @@
 
+package Lecutre7AssociativeArrays.exercise;
+
+        import java.util.LinkedHashMap;
+        import java.util.Scanner;
+
+public class AMinerTask {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        LinkedHashMap<String,Integer> minerals = new LinkedHashMap<>();
+
+        String command = scanner.nextLine();
+
+        while (!"stop".equals(command)){
+            String key = command;
+            int value = Integer.parseInt(scanner.nextLine());
+
+            if (!minerals.containsKey(key)) {
+                minerals.put(key,value);
+            }else {
+                int oldValue = minerals.get(key) + value;
+                minerals.put(key,oldValue);
+            }
+            command = scanner.nextLine();
+        }
+
+        minerals.entrySet().forEach(e -> System.out.printf("%s -> %d%n",e.getKey(),e.getValue()));
+    }
+}
